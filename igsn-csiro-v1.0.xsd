@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" targetNamespace="http://igsn.org/schema/kernel-v.1.0" elementFormDefault="qualified">
+	<xs:include schemaLocation="include/igsn-nameIdentifierScheme-v1.0.xsd"/>
+	<xs:include schemaLocation="include/igsn-identifierType-v1.0.xsd"/>
+	<xs:include schemaLocation="include/igsn-relatedIdentifierType-v1.0.xsd"/>
+	<xs:include schemaLocation="include/igsn-relationType-v1.0.xsd"/>
+	<xs:include schemaLocation="include/igsn-eventType-v1.0.xsd"/>
+	<xs:include schemaLocation="include/igsn-dateType.xsd"/>
+	<xs:include schemaLocation="include/igsn-sampleType.xsd"/>
+	<xs:include schemaLocation="include/igsn-samplingFeature.xsd"/>
+	<xs:element name="samples">
+		<xs:annotation>
+			<xs:documentation>A collection of samples.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="sample" minOccurs="1" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>An individual sample</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="sampleNumber">
+								<xs:annotation>
+									<xs:documentation>(Required)The first two characters must be [A-Z] and represents the namespace of an allocating agent, e.g, CS. The rest can be a combination of characters, numbers and hyphen (-) and dot(.). See details at http://dokuwiki.gfz-potsdam.de/datawiki/doku.php?id=igsn:syntax</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="igsn:igsnSyntax">
+											<xs:attribute name="identifierType" type="igsn:identifierType" use="required"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<!-- sample number, e.g., igsn -->
+							<xs:element name="sampleName" type="xs:token">
+								<xs:annotation>
+									<xs:documentation>(Required)Name of the sample.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="otherNames" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>An alias for the sample name. Use this element to include local name/identifier of the sample.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="otherName" maxOccurs="unbounded">
+											<xs:simpleType>
+												<xs:restriction base="xs:token"/>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="isPublic" type="xs:boolean">
+								<xs:annotation>
+									<xs:documentation>(Required) 1 for public and 0 for private samples.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="landingPage" type="xs:anyURI">
+								<xs:annotation>
+									<xs:documentation>(Required) The landing page of a sample.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<!--An alias for the sample name. -->
+							<xs:element name="sampleType" type="igsn:sampleType">
+								<xs:annotation>
+									<xs:documentation>(Required) Sample type, e.g., rock, snow and sediment. See controlled list "include/igsn-sampleType-v1.1.xsd"</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="classification" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Classification concepts, e.g. Rock>Igneous.Use the classifictionIdentifier attibute to indicate the URL of the concept or related vocabulary service.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:token">
+											<xs:attribute name="classificationIdentifier" type="xs:anyURI"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="purpose" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The purpose for collecting the sample.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:token"/>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="samplingLocation" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The location where the sample is collected. This may apply to geo (latlon,localxy, bounding box(bbox)) and non-geo(locality) location information. Example of latitude and longitude: 51.150719,-0.973177. Example of localxy (UTM Easting and UTM Northing) is : 641753.82,5668538.64. The srsName attribute can be used to indicate the UTMZone (e.g., 30U) or SRID.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:group ref="igsn:locationGroup">
+										<xs:annotation>
+											<xs:documentation>
+			</xs:documentation>
+										</xs:annotation>
+									</xs:group>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="samplingTime" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The temporal information of sample collection</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:group ref="igsn:timeGroup"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="samplingFeature" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The domain feature from which a sample is collected/produced, e.g., lake and well. See controlled list - "include/igsn-samplingFeature-v1.1.xsd"</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="feature" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="featureName" type="xs:string"/>
+													<xs:element name="featureLocation" minOccurs="0">
+														<xs:complexType>
+															<xs:group ref="igsn:locationGroup">
+																<xs:annotation>
+																	<xs:documentation>The location of a samplingfeature. This may apply to geo (latlon,localxy, bounding box(bbox)) and non-geo(locality) location information. Example of latitude and longitude: 51.150719,-0.973177. Example of localxy (UTM Easting and UTM Northing) is : 641753.82,5668538.64. The srsName attribute can be used to indicate the UTMZone (e.g., 30U) or SRID.
+			</xs:documentation>
+																</xs:annotation>
+															</xs:group>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="featureType" type="igsn:samplingFeature"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="sampleCollectors" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Contact information of the person who collected the sample.This also applies to the principal investigator in a project responsible for sample collection.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="collector" type="xs:token" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="sampleSize" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Size of the sample, e.g., the length of a core or the weight of a specimen.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:decimal">
+											<xs:attribute name="units" type="xs:anyURI"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="samplingMethod" type="xs:token" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Method/equipment used to collect the sample, e.g., Dredging, Manual Observation </xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="samplingCampaign" type="xs:token" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The field program/related projects.  e.g., cruise or expedition.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="sampleCuration">
+								<xs:annotation>
+									<xs:documentation>(Required) Sample archival information, e.g., contact information of the person who should be contacted for information about or access to the sample. Use curationLocation to indicate the address. </xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="curator" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="curatorName" type="xs:token"/>
+													<xs:element name="curationTime" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>The temporal information of sample curation</xs:documentation>
+														</xs:annotation>
+														<xs:complexType>
+															<xs:group ref="igsn:timeGroup"/>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="curationLocation" type="xs:token" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="relatedResources" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>This element is used to link the sample metadata other related samples and documents (e.g., project reports, publications, etc.)</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="relatedResourceIdentifier" minOccurs="1" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:token">
+														<xs:attribute name="relatedIdentifierType" type="igsn:relatedIdentifierType"/>
+														<xs:attribute name="relationType" type="igsn:relationType"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="comments" type="xs:token" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Any free text describing the sample. This also can be used to include additional metadata which cannot be specified with this standard schema.</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:group name="timeGroup">
+		<xs:annotation>
+			<xs:documentation>Represents time instant or time period (start,end).</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="timeInstant" type="igsn:W3CDTFdate" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="timePeriod" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="start" type="igsn:W3CDTFdate" minOccurs="0"/>
+						<xs:element name="end" type="igsn:W3CDTFdate" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:group name="locationGroup">
+		<xs:annotation>
+			<xs:documentation>The location where the sample is collected. This may apply to geo (latlon,localxy, bounding box(bbox)) and non-geo(locality) location information. Example of latitude and longitude: 51.150719,-0.973177. Example of localxy (UTM Easting and UTM Northing) is : 641753.82,5668538.64. The srsName attribute can be used to indicate the UTMZone (e.g., 30U) or SRID.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="latlon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Representation: lat,lon</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:token">
+							<xs:attribute name="srsName" type="xs:token"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="localxy" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Representation: x,y</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:token">
+							<xs:attribute name="srsName" type="xs:token"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="verticalDatum" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Vertical datums specify the origin for elevations assocated with a feature, e.g., MSL, NAVD88, NGVD29, or Unknown</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="locality" type="xs:token" minOccurs="0"/>
+			<!--A bounding box is defined by four Latitude/Longitude coordinates, and is the smallest rectangular shape thus defined which totally encloses all of the referenced data-->
+			<xs:element name="bbox" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Representation: minX,minY,maxX,maxY</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:token">
+							<xs:attribute name="srsName" type="xs:token"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:group>
+	<xs:simpleType name="igsnSyntax">
+		<xs:annotation>
+			<xs:documentation>IGSN syntax data type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="([A-Z]{2}[A-Z0-9\-.]*)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="trueOrFalse">
+		<xs:restriction base="xs:boolean">
+			<xs:pattern value="0"/>
+			<xs:pattern value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
