@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <igsn:samples xsi:schemaLocation="http://igsn.org/schema/kernel-v.1.0 igsn-csiro-v1.0.xsd" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<igsn:sample>
-		<igsn:sampleNumber identifierType="igsn">CSCAP0001</igsn:sampleNumber>
+		<igsn:sampleNumber identifierType="igsn">CCCAP0001</igsn:sampleNumber>
 		<igsn:sampleName>Cap0001-JHP8</igsn:sampleName>
 		<igsn:isPublic>0</igsn:isPublic>
 		<igsn:landingPage><![CDATA[https://capdf.csiro.au/gs-hydrogeochem/public/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=public:hydrogeochem&cql_filter=sid%3D243]]></igsn:landingPage>
