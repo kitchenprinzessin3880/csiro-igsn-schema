@@ -8,9 +8,9 @@ Remarks / TO-DO* (Version 1: 25.08.2015)
 
     The XML schema has been fully validated. It includes *.xsd from the IGSN registry schema (v1.0).
     Mandatory elements : sampleNumber,sampleType,sampleName,Curator, landingPage
-    Finalize controlled vocabularies - samplingFeatureType, Sample Types*
+    * Finalize controlled vocabularies - samplingFeatureType, Sample Types
     Classification details will be provided by end-users (concept name, url)
     samplingMethod is specified by users; this element can be used to specify methods/instruments that are used to collect a sample.
     The XML schema incorporates some elements and data types from the standard IGSN scheme (top-level). Namespace should be assigned for the new elements, e.g.,igsn:sampleName vs csi:sampleName
-    It would be good to used a controlled list for describing property/units (sampleSize)*
-    The ownership information of samples is not supported.* 
+    *It would be good to used a controlled list for describing property/units (sampleSize)
+    *The ownership information of samples is not supported.
