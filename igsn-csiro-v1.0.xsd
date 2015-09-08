@@ -110,9 +110,9 @@
 									<xs:group ref="igsn:timeGroup"/>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="samplingFeature" minOccurs="0">
+							<xs:element name="samplingFeatures" minOccurs="0">
 								<xs:annotation>
-									<xs:documentation>The domain feature from which a sample is collected/produced, e.g., lake and well. See controlled list - "include/igsn-samplingFeature-v1.1.xsd"</xs:documentation>
+									<xs:documentation>The host from which a sample is collected/produced, e.g., observation well. See controlled list - "include/igsn-samplingFeature-v1.1.xsd"</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
@@ -218,6 +218,7 @@
 									<xs:documentation>Any free text describing the sample. This also can be used to include additional metadata which cannot be specified with this standard schema.</xs:documentation>
 								</xs:annotation>
 							</xs:element>
+							<xs:element name="clientSubnamespace"/>
 						</xs:all>
 					</xs:complexType>
 				</xs:element>
