@@ -218,7 +218,32 @@
 									<xs:documentation>Any free text describing the sample. This also can be used to include additional metadata which cannot be specified with this standard schema.</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="clientSubnamespace"/>
+							<xs:element name="subNamespace">
+								<xs:annotation>
+									<xs:documentation>The subnamespace of the data center registering the samples</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<!-- ADMINISTRATIVE ELEMENTS -->
+							<xs:element name="log" minOccurs="1">
+								<xs:annotation>
+									<xs:documentation>The type of status of the physical sample and IGSN registration</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="logElement" minOccurs="1" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="event" type="igsn:eventType" use="required"/>
+														<xs:attribute name="timeStamp" type="igsn:W3CDTFdate" use="required"/>
+														<xs:attribute name="comment" type="xs:string"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
 						</xs:all>
 					</xs:complexType>
 				</xs:element>
