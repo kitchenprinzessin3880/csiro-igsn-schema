@@ -8,7 +8,7 @@
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:enumeration value="submitted"/><!-- Date of the initial registration. -->
-            <xs:enumeration value="registered"/><!-- The object is registered. -->
+            <!--xs:enumeration value="registered"/--><!-- The object is registered. -->
             <xs:enumeration value="updated"/><!-- Date of the last metadata update. -->
             <xs:enumeration value="deprecated"/><!-- The object description is deprecated. The entry is no longer relevant, e.g. due to duplicate registration. -->
             <xs:enumeration value="destroyed"/><!-- The object is destroyed. -->
