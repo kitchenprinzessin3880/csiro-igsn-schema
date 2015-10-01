@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" targetNamespace="http://igsn.org/schema/kernel-v.1.0">
+	<xs:simpleType name="materialType">
+		<xs:annotation>
+			<xs:documentation>Categorize the materials that composes a sample.Source vocabulary:http://vocabulary.odm2.org/medium/ </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/air"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/gas"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/ice"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/liquidAqueous"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/liquidOrganic"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/mineral"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/notApplicable"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/organism"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/other"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/particulate"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/rock"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/sediment"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/snow"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/soil"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/tissue"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/medium/unknown"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
