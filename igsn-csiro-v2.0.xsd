@@ -168,18 +168,6 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="sampleSize" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Size of the sample, e.g., the length of a core or the weight of a specimen.</xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:simpleContent>
-										<xs:extension base="xs:decimal">
-											<xs:attribute name="units" type="xs:anyURI"/>
-										</xs:extension>
-									</xs:simpleContent>
-								</xs:complexType>
-							</xs:element>
 							<xs:element name="samplingMethod" type="xs:token">
 								<xs:annotation>
 									<xs:documentation>(Required) Method/equipment used to collect the sample, e.g., Dredging, Manual Observation. If the method is not available, use 'unknown". </xs:documentation>
@@ -239,20 +227,20 @@
 									<xs:documentation>Any free text describing the sample. This also can be used to include additional metadata which cannot be specified with this standard schema.</xs:documentation>
 								</xs:annotation>
 							</xs:element>
+							<xs:element name="logElement" minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>The type of status of the physical sample and IGSN registration</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:token">
+											<xs:attribute name="event" type="igsn:eventType" use="required"/>
+											<xs:attribute name="timeStamp" type="igsn:W3CDTFdate" use="required"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
 						</xs:all>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="logElement" minOccurs="1" maxOccurs="1">
-					<xs:annotation>
-						<xs:documentation>The type of status of the physical sample and IGSN registration</xs:documentation>
-					</xs:annotation>
-					<xs:complexType>
-						<xs:simpleContent>
-							<xs:extension base="xs:token">
-								<xs:attribute name="event" type="igsn:eventType" use="required"/>
-								<xs:attribute name="timeStamp" type="igsn:W3CDTFdate" use="required"/>
-							</xs:extension>
-						</xs:simpleContent>
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
