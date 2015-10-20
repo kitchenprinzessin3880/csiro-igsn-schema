@@ -10,6 +10,7 @@
 	<xs:include schemaLocation="include/igsn-sampleType.xsd"/>
 	<xs:include schemaLocation="include/igsn-samplingFeature.xsd"/>
 	<xs:include schemaLocation="include/igsn-materialType.xsd"/>
+	<xs:include schemaLocation="include/igsn-spatialType.xsd"/>
 	<xs:element name="samples">
 		<xs:annotation>
 			<xs:documentation>A collection of samples.</xs:documentation>
@@ -124,7 +125,7 @@
 							</xs:element>
 							<xs:element name="samplingTime">
 								<xs:annotation>
-									<xs:documentation>(Required) The temporal information of sample collection. If the value is not available, leave a blank element.</xs:documentation>
+									<xs:documentation>(Required) The temporal information of sample collection. If the value is not available, set unknown to true.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:group ref="igsn:timeGroup"/>
@@ -133,7 +134,7 @@
 							</xs:element>
 							<xs:element name="samplingFeatures" minOccurs="0">
 								<xs:annotation>
-									<xs:documentation>The host from which a sample is collected/produced, e.g., observation well. See controlled list - "include/igsn-samplingFeature-v1.1.xsd"</xs:documentation>
+									<xs:documentation>The host from which a sample is collected/produced, e.g., observation well. See controlled list - "include/igsn-samplingFeature-v1.1.xsd". Note that this is not ultimate feature (sampledFeature),but rather referring to the proximate feature of a sample.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
@@ -158,13 +159,24 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="sampleCollectors" minOccurs="0">
+							<xs:element name="sampleCollectors">
 								<xs:annotation>
 									<xs:documentation>Contact information of the person who collected the sample.This also applies to the principal investigator in a project responsible for sample collection.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence maxOccurs="unbounded">
-										<xs:element name="collector" type="xs:token" maxOccurs="unbounded"/>
+										<xs:element name="collector" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>if the collection information is not available,specify the element's value as "unknown" </xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:token">
+														<xs:attribute name="collectorIdentifier" type="xs:anyURI"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -264,49 +276,45 @@
 	</xs:group>
 	<xs:group name="locationGroup">
 		<xs:annotation>
-			<xs:documentation>The location where the sample is collected. This may apply to geo (latlon,localxy, bounding box(bbox)) and non-geo(locality) location information. Example of latitude and longitude: 51.150719,-0.973177. Example of localxy (UTM Easting and UTM Northing) is : 641753.82,5668538.64. The srsName attribute can be used to indicate the UTMZone (e.g., 30U) or SRID.
+			<xs:documentation>This may apply to a named place (locality) or geometric (coordinate-based) location, e.g., WKT representation. The srs attribute indicates a Spatial Reference System Identifier (SRID)/EPSG, e.g., EPSG:4326
 			</xs:documentation>
 		</xs:annotation>
 		<xs:all>
-			<xs:element name="latlon" minOccurs="0">
+			<xs:element name="locality" type="xs:token" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Representation: lat,lon</xs:documentation>
+					<xs:documentation>Named place or address</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="wkt" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Well Known Text (wkt) representation of entity. </xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:simpleContent>
-						<xs:extension base="xs:token">
-							<xs:attribute name="srsName" type="xs:token"/>
+						<xs:extension base="xs:string">
+							<xs:attribute name="srs" type="xs:token" use="required">
+								<xs:annotation>
+									<xs:documentation>Use EPSG code, e.g., "EPSG:XXX", where "XXX" is the EPSG code for the referenced coordinate system; "none" shall be provided if the coordinate system is unreferenced.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="spatialType" type="igsn:spatialType" use="required"/>
 						</xs:extension>
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="localxy" minOccurs="0">
+			<xs:element name="elevation" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Representation: x,y</xs:documentation>
+					<xs:documentation>Height of an entity above datum.</xs:documentation>
 				</xs:annotation>
 				<xs:complexType>
 					<xs:simpleContent>
-						<xs:extension base="xs:token">
-							<xs:attribute name="srsName" type="xs:token"/>
-						</xs:extension>
-					</xs:simpleContent>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="verticalDatum" type="xs:decimal" minOccurs="0">
-				<xs:annotation>
-					<xs:documentation>Vertical datums specify the origin for elevations assocated with a feature, e.g., MSL, NAVD88, NGVD29, or Unknown</xs:documentation>
-				</xs:annotation>
-			</xs:element>
-			<xs:element name="locality" type="xs:token" minOccurs="0"/>
-			<!--A bounding box is defined by four Latitude/Longitude coordinates, and is the smallest rectangular shape thus defined which totally encloses all of the referenced data-->
-			<xs:element name="bbox" minOccurs="0" maxOccurs="1">
-				<xs:annotation>
-					<xs:documentation>Representation: minX,minY,maxX,maxY</xs:documentation>
-				</xs:annotation>
-				<xs:complexType>
-					<xs:simpleContent>
-						<xs:extension base="xs:token">
-							<xs:attribute name="srsName" type="xs:token"/>
+						<xs:extension base="xs:string">
+							<xs:attribute name="datum" type="xs:token" use="optional">
+								<xs:annotation>
+									<xs:documentation>a vertical datums specify the origin for elevations assocated with a feature, e.g., MSL, NAVD88, NGVD29, or Unknown</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="units" type="xs:token" use="optional"/>
 						</xs:extension>
 					</xs:simpleContent>
 				</xs:complexType>
