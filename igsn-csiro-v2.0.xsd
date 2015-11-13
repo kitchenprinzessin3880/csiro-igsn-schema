@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" targetNamespace="http://igsn.org/schema/kernel-v.1.0" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink/namespace" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" xmlns:gml="http://www.opengis.net/gml/3.2" targetNamespace="http://igsn.org/schema/kernel-v.1.0" elementFormDefault="qualified" version="2.0">
 	<xs:include schemaLocation="include/igsn-nameIdentifierScheme-v1.0.xsd"/>
 	<xs:include schemaLocation="include/igsn-identifierType-v1.0.xsd"/>
 	<xs:include schemaLocation="include/igsn-relatedIdentifierType-v1.0.xsd"/>
@@ -11,6 +11,7 @@
 	<xs:include schemaLocation="include/igsn-samplingFeature.xsd"/>
 	<xs:include schemaLocation="include/igsn-materialType.xsd"/>
 	<xs:include schemaLocation="include/igsn-spatialType.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/basicTypes.xsd"/>
 	<xs:element name="samples">
 		<xs:annotation>
 			<xs:documentation>A collection of samples.</xs:documentation>
@@ -60,15 +61,25 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="isPublic" type="xs:boolean">
+							<xs:element name="isPublic">
 								<xs:annotation>
 									<xs:documentation>(Required) 1 for public and 0 for private samples.</xs:documentation>
 								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:boolean"/>
+									</xs:simpleContent>
+								</xs:complexType>
 							</xs:element>
-							<xs:element name="landingPage" type="xs:anyURI">
+							<xs:element name="landingPage">
 								<xs:annotation>
 									<xs:documentation>(Required) The landing page of a sample.</xs:documentation>
 								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:anyURI"/>
+									</xs:simpleContent>
+								</xs:complexType>
 							</xs:element>
 							<xs:element name="sampleTypes">
 								<xs:annotation>
@@ -76,7 +87,11 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence maxOccurs="unbounded">
-										<xs:element name="sampleType" type="igsn:sampleType" maxOccurs="unbounded"/>
+										<xs:element name="sampleType" maxOccurs="unbounded">
+											<xs:simpleType>
+												<xs:union memberTypes="igsn:sampleType gml:NilReasonEnumeration"/>
+											</xs:simpleType>
+										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -86,7 +101,11 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence maxOccurs="unbounded">
-										<xs:element name="materialType" type="igsn:materialType" maxOccurs="unbounded"/>
+										<xs:element name="materialType" maxOccurs="unbounded">
+											<xs:simpleType>
+												<xs:union memberTypes="igsn:materialType gml:NilReasonEnumeration"/>
+											</xs:simpleType>
+										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -110,9 +129,9 @@
 									<xs:restriction base="xs:token"/>
 								</xs:simpleType>
 							</xs:element>
-							<xs:element name="samplingLocation" nillable="true">
+							<xs:element name="samplingLocation">
 								<xs:annotation>
-									<xs:documentation>(Required) The location where the sample is collected. This may apply to geo (latlon,localxy, bounding box(bbox)) and non-geo(locality) location information. If the value is not available, leave a blank element. Example of latitude and longitude: 51.150719,-0.973177. Example of localxy (UTM Easting and UTM Northing) is : 641753.82,5668538.64. The srsName attribute can be used to indicate the UTMZone (e.g., 30U) or SRID.</xs:documentation>
+									<xs:documentation>(Required) The location where the sample is collected. This may apply to geo (latlon,localxy, bounding box(bbox)) and non-geo(locality) location information. If the value is not available, specify the reason using the 'nillable attribute' (see gml:NilReasonEnumeration).Example of latitude and longitude: 51.150719,-0.973177. Example of localxy (UTM Easting and UTM Northing) is : 641753.82,5668538.64. The srsName attribute can be used to indicate the UTMZone (e.g., 30U) or SRID.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:group ref="igsn:locationGroup">
@@ -121,15 +140,16 @@
 			</xs:documentation>
 										</xs:annotation>
 									</xs:group>
+									<xs:attribute name="nillable" type="gml:NilReasonEnumeration" use="optional"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="samplingTime">
 								<xs:annotation>
-									<xs:documentation>(Required) The temporal information of sample collection. If the value is not available, set unknown to true.</xs:documentation>
+									<xs:documentation>(Required) The temporal information of sample collection. if the value is not available, specify the reason using the 'nillable attribute' (see gml:NilReasonEnumeration)</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:group ref="igsn:timeGroup"/>
-									<xs:attribute name="unknown" type="xs:boolean"/>
+									<xs:attribute name="nillable" type="gml:NilReasonEnumeration" use="optional"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="samplingFeatures" minOccurs="0">
@@ -161,18 +181,15 @@
 							</xs:element>
 							<xs:element name="sampleCollectors">
 								<xs:annotation>
-									<xs:documentation>Contact information of the person who collected the sample.This also applies to the principal investigator in a project responsible for sample collection.</xs:documentation>
+									<xs:documentation>Contact information of the person who collected the sample.This also applies to the principal investigator in a project responsible for sample collection. if the value is not available, specify the reason using the 'nillable attribute' (see gml:NilReasonEnumeration)</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence maxOccurs="unbounded">
 										<xs:element name="collector" maxOccurs="unbounded">
-											<xs:annotation>
-												<xs:documentation>if the collection information is not available,specify the element's value as "unknown" </xs:documentation>
-											</xs:annotation>
 											<xs:complexType>
 												<xs:simpleContent>
-													<xs:extension base="xs:token">
-														<xs:attribute name="collectorIdentifier" type="xs:anyURI"/>
+													<xs:extension base="igsn:StringOrNillValues">
+														<xs:attribute name="collectorIdentifier" type="xs:anyURI" use="optional"/>
 													</xs:extension>
 												</xs:simpleContent>
 											</xs:complexType>
@@ -180,10 +197,13 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="samplingMethod" type="xs:token">
+							<xs:element name="samplingMethod">
 								<xs:annotation>
-									<xs:documentation>(Required) Method/equipment used to collect the sample, e.g., Dredging, Manual Observation. If the method is not available, use 'unknown". </xs:documentation>
+									<xs:documentation>(Required) Method/equipment used to collect the sample, e.g., Dredging, Manual Observation. if the value is not available, specify the reason using the 'nillable attribute' (see gml:NilReasonEnumeration).</xs:documentation>
 								</xs:annotation>
+								<xs:simpleType>
+									<xs:union memberTypes="xs:token gml:NilReasonEnumeration"/>
+								</xs:simpleType>
 							</xs:element>
 							<xs:element name="samplingCampaign" type="xs:token" minOccurs="0">
 								<xs:annotation>
@@ -208,7 +228,7 @@
 															<xs:group ref="igsn:timeGroup"/>
 														</xs:complexType>
 													</xs:element>
-													<xs:element name="curationLocation" type="xs:token" minOccurs="0"/>
+													<xs:element name="curationLocation" type="xs:token"/>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
@@ -334,5 +354,8 @@
 			<xs:pattern value="0"/>
 			<xs:pattern value="1"/>
 		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="StringOrNillValues">
+		<xs:union memberTypes="xs:token gml:NilReasonEnumeration"/>
 	</xs:simpleType>
 </xs:schema>
