@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink/namespace" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" xmlns:gml="http://www.opengis.net/gml/3.2" targetNamespace="http://igsn.org/schema/kernel-v.1.0" elementFormDefault="qualified" version="2.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink/namespace" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" targetNamespace="http://igsn.org/schema/kernel-v.1.0" elementFormDefault="qualified" version="2.0">
 	<xs:include schemaLocation="include/igsn-nameIdentifierScheme-v1.0.xsd"/>
 	<xs:include schemaLocation="include/igsn-identifierType-v1.0.xsd"/>
 	<xs:include schemaLocation="include/igsn-relatedIdentifierType-v1.0.xsd"/>
@@ -11,7 +11,11 @@
 	<xs:include schemaLocation="include/igsn-samplingFeature.xsd"/>
 	<xs:include schemaLocation="include/igsn-materialType.xsd"/>
 	<xs:include schemaLocation="include/igsn-spatialType.xsd"/>
-	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/basicTypes.xsd"/>
+	<xs:include schemaLocation="include/igsn-nillType.xsd"/>
+	<!-- xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/basicTypes.xsd"/ -->
+	<!-- xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance"/ -->
+	<xs:import/>
+	<xs:import/>
 	<xs:element name="samples">
 		<xs:annotation>
 			<xs:documentation>A collection of samples.</xs:documentation>
@@ -29,9 +33,9 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:all>
-							<xs:element name="sampleNumber">
+							<xs:element name="sampleNumber" nillable="false">
 								<xs:annotation>
-									<xs:documentation>(Required)The first two characters must be [A-Z] and represents the namespace of an allocating agent, e.g, CS. The rest can be a combination of characters, numbers and hyphen (-) and dot(.). See details at http://dokuwiki.gfz-potsdam.de/datawiki/doku.php?id=igsn:syntax</xs:documentation>
+									<xs:documentation>(Required)The first two characters must be [A-Z] and represents the namespace of an allocating agent, e.g, CS. The rest can be a combination of characters, numbers and dash (-) and dot(.). See IGSN syntax at http://dokuwiki.gfz-potsdam.de/datawiki/doku.php?id=igsn:syntax</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:simpleContent>
@@ -42,9 +46,9 @@
 								</xs:complexType>
 							</xs:element>
 							<!-- sample number, e.g., igsn -->
-							<xs:element name="sampleName" type="xs:token">
+							<xs:element name="sampleName" type="xs:token" nillable="false">
 								<xs:annotation>
-									<xs:documentation>(Required)Name of the sample.</xs:documentation>
+									<xs:documentation>Name of the sample.</xs:documentation>
 								</xs:annotation>
 							</xs:element>
 							<xs:element name="otherNames" minOccurs="0">
@@ -61,9 +65,9 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="isPublic">
+							<xs:element name="isPublic" nillable="false">
 								<xs:annotation>
-									<xs:documentation>(Required) 1 for public and 0 for private samples.</xs:documentation>
+									<xs:documentation>The visibility of sample metadata. Use 1 for public and 0 for private samples.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:simpleContent>
@@ -71,9 +75,9 @@
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="landingPage">
+							<xs:element name="landingPage" nillable="false">
 								<xs:annotation>
-									<xs:documentation>(Required) The landing page of a sample.</xs:documentation>
+									<xs:documentation>The landing page of a sample.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:simpleContent>
@@ -81,32 +85,26 @@
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="sampleTypes">
+							<xs:element name="sampleTypes" nillable="true">
 								<xs:annotation>
-									<xs:documentation>(Required) The basic form of a sample. See controlled list "include/igsn-sampleType.xsd"</xs:documentation>
+									<xs:documentation>The basic form of a sample. See controlled list "include/igsn-sampleType.xsd". If the value of a sampleType is not available, declare the xsi:nil and nilReason attributes, e.g.,  xsi:nil="true" nilReason=""</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
-									<xs:sequence maxOccurs="unbounded">
-										<xs:element name="sampleType" maxOccurs="unbounded">
-											<xs:simpleType>
-												<xs:union memberTypes="igsn:sampleType gml:NilReasonEnumeration"/>
-											</xs:simpleType>
-										</xs:element>
+									<xs:sequence>
+										<xs:element name="sampleType" type="igsn:sampleType" nillable="false" maxOccurs="unbounded"/>
 									</xs:sequence>
+									<xs:attributeGroup ref="igsn:nullValue"/>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="materialTypes">
+							<xs:element name="materialTypes" nillable="true">
 								<xs:annotation>
-									<xs:documentation>(Required) The materials that compose a sample. See controlled list "include/igsn-materialType.xsd"</xs:documentation>
+									<xs:documentation>The materials that compose a sample. See controlled list "include/igsn-materialType.xsd"</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
-									<xs:sequence maxOccurs="unbounded">
-										<xs:element name="materialType" maxOccurs="unbounded">
-											<xs:simpleType>
-												<xs:union memberTypes="igsn:materialType gml:NilReasonEnumeration"/>
-											</xs:simpleType>
-										</xs:element>
+									<xs:sequence>
+										<xs:element name="materialType" type="igsn:materialType" nillable="false" maxOccurs="unbounded"/>
 									</xs:sequence>
+									<xs:attributeGroup ref="igsn:nullValue"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="classification" minOccurs="0">
@@ -129,9 +127,9 @@
 									<xs:restriction base="xs:token"/>
 								</xs:simpleType>
 							</xs:element>
-							<xs:element name="samplingLocation">
+							<xs:element name="samplingLocation" nillable="true">
 								<xs:annotation>
-									<xs:documentation>(Required) The location where the sample is collected. This may apply to geo (latlon,localxy, bounding box(bbox)) and non-geo(locality) location information. If the value is not available, specify the reason using the 'nillable attribute' (see gml:NilReasonEnumeration).Example of latitude and longitude: 51.150719,-0.973177. Example of localxy (UTM Easting and UTM Northing) is : 641753.82,5668538.64. The srsName attribute can be used to indicate the UTMZone (e.g., 30U) or SRID.</xs:documentation>
+									<xs:documentation>The location where the sample is collected. This may apply to geo (latlon,localxy, bounding box(bbox)) and non-geo(locality) location information.Example of latitude and longitude: 51.150719,-0.973177. Example of localxy (UTM Easting and UTM Northing) is : 641753.82,5668538.64. The srs attribute can be used to indicate the UTMZone (e.g., 30U) or SRID. If the location value is not available, declare the xsi:nil and nilReason attributes.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:group ref="igsn:locationGroup">
@@ -140,16 +138,16 @@
 			</xs:documentation>
 										</xs:annotation>
 									</xs:group>
-									<xs:attribute name="nillable" type="gml:NilReasonEnumeration" use="optional"/>
+									<xs:attributeGroup ref="igsn:nullValue"/>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="samplingTime">
+							<xs:element name="samplingTime" nillable="true">
 								<xs:annotation>
-									<xs:documentation>(Required) The temporal information of sample collection. if the value is not available, specify the reason using the 'nillable attribute' (see gml:NilReasonEnumeration)</xs:documentation>
+									<xs:documentation>The temporal information of sample collection. </xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:group ref="igsn:timeGroup"/>
-									<xs:attribute name="nillable" type="gml:NilReasonEnumeration" use="optional"/>
+									<xs:attributeGroup ref="igsn:nullValue"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="samplingFeatures" minOccurs="0">
@@ -179,40 +177,45 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="sampleCollectors">
+							<xs:element name="sampleCollectors" nillable="true">
 								<xs:annotation>
-									<xs:documentation>Contact information of the person who collected the sample.This also applies to the principal investigator in a project responsible for sample collection. if the value is not available, specify the reason using the 'nillable attribute' (see gml:NilReasonEnumeration)</xs:documentation>
+									<xs:documentation>Contact information of the person who collected the sample.This also applies to the principal investigator in a project responsible for sample collection.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
-									<xs:sequence maxOccurs="unbounded">
+									<xs:sequence>
 										<xs:element name="collector" maxOccurs="unbounded">
-											<xs:complexType>
+											<!--xs:complexType>
 												<xs:simpleContent>
 													<xs:extension base="igsn:StringOrNillValues">
 														<xs:attribute name="collectorIdentifier" type="xs:anyURI" use="optional"/>
 													</xs:extension>
 												</xs:simpleContent>
-											</xs:complexType>
+											</xs:complexType -->
 										</xs:element>
 									</xs:sequence>
+									<xs:attributeGroup ref="igsn:nullValue"/>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="samplingMethod">
+							<xs:element name="samplingMethod" nillable="true">
 								<xs:annotation>
-									<xs:documentation>(Required) Method/equipment used to collect the sample, e.g., Dredging, Manual Observation. if the value is not available, specify the reason using the 'nillable attribute' (see gml:NilReasonEnumeration).</xs:documentation>
+									<xs:documentation>Method/equipment used to collect the sample, e.g., Dredging, Manual Observation. </xs:documentation>
 								</xs:annotation>
-								<xs:simpleType>
-									<xs:union memberTypes="xs:token gml:NilReasonEnumeration"/>
-								</xs:simpleType>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:token">
+											<xs:attributeGroup ref="igsn:nullValue"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
 							</xs:element>
 							<xs:element name="samplingCampaign" type="xs:token" minOccurs="0">
 								<xs:annotation>
 									<xs:documentation>The field program/related projects.  e.g., cruise or expedition.</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="sampleCuration">
+							<xs:element name="sampleCuration" nillable="false">
 								<xs:annotation>
-									<xs:documentation>(Required) Sample archival information, e.g., contact information of the person who should be contacted for information about or access to the sample. Use curationLocation to indicate the address. </xs:documentation>
+									<xs:documentation>Sample archival information, e.g., contact information of the person who should be contacted for information about or access to the sample. Use curationLocation to indicate the address. </xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
@@ -233,6 +236,7 @@
 											</xs:complexType>
 										</xs:element>
 									</xs:sequence>
+									<xs:attributeGroup ref="igsn:nullValue"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="relatedResources" minOccurs="0" maxOccurs="1">
@@ -259,7 +263,7 @@
 									<xs:documentation>Any free text describing the sample. This also can be used to include additional metadata which cannot be specified with this standard schema.</xs:documentation>
 								</xs:annotation>
 							</xs:element>
-							<xs:element name="logElement" minOccurs="1" maxOccurs="1">
+							<xs:element name="logElement" nillable="false" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
 									<xs:documentation>The type of status of the physical sample and IGSN registration</xs:documentation>
 								</xs:annotation>
@@ -341,6 +345,9 @@
 			</xs:element>
 		</xs:all>
 	</xs:group>
+	<xs:attributeGroup name="nullValue">
+		<xs:attribute name="nilReason" type="igsn:NilReasonType" use="optional"/>
+	</xs:attributeGroup>
 	<xs:simpleType name="igsnSyntax">
 		<xs:annotation>
 			<xs:documentation>IGSN syntax data type</xs:documentation>
@@ -349,13 +356,13 @@
 			<xs:pattern value="([A-Z]{2}[A-Za-z0-9\-.]*)"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="trueOrFalse">
+	<!--- xs:simpleType name="trueOrFalse">
 		<xs:restriction base="xs:boolean">
 			<xs:pattern value="0"/>
 			<xs:pattern value="1"/>
 		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="StringOrNillValues">
-		<xs:union memberTypes="xs:token gml:NilReasonEnumeration"/>
-	</xs:simpleType>
+	</xs:simpleType -->
+	<!--xs:simpleType name="StringOrNillValues">
+		<xs:union memberTypes="xs:anyURI igsn:NilReasonType"/>
+	</xs:simpleType -->
 </xs:schema>
