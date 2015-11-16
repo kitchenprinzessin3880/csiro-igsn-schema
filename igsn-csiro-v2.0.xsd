@@ -191,6 +191,13 @@
 													</xs:extension>
 												</xs:simpleContent>
 											</xs:complexType -->
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:token">
+														<xs:attribute name="collectorIdentifier" type="xs:anyURI" use="optional"/>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
 										</xs:element>
 									</xs:sequence>
 									<xs:attributeGroup ref="igsn:nullValue"/>
