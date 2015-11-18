@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink/namespace" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" targetNamespace="http://igsn.org/schema/kernel-v.1.0" elementFormDefault="qualified" version="2.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink/namespace" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" targetNamespace="http://igsn.org/schema/kernel-v.1.0" elementFormDefault="qualified">
 	<xs:include schemaLocation="include/igsn-nameIdentifierScheme-v1.0.xsd"/>
 	<xs:include schemaLocation="include/igsn-identifierType-v1.0.xsd"/>
 	<xs:include schemaLocation="include/igsn-relatedIdentifierType-v1.0.xsd"/>
@@ -33,7 +33,7 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:all>
-							<xs:element name="sampleNumber" nillable="false">
+							<xs:element name="sampleNumber">
 								<xs:annotation>
 									<xs:documentation>(Required)The first two characters must be [A-Z] and represents the namespace of an allocating agent, e.g, CS. The rest can be a combination of characters, numbers and dash (-) and dot(.). See IGSN syntax at http://dokuwiki.gfz-potsdam.de/datawiki/doku.php?id=igsn:syntax</xs:documentation>
 								</xs:annotation>
@@ -46,10 +46,15 @@
 								</xs:complexType>
 							</xs:element>
 							<!-- sample number, e.g., igsn -->
-							<xs:element name="sampleName" type="xs:token" nillable="false">
+							<xs:element name="sampleName">
 								<xs:annotation>
 									<xs:documentation>Name of the sample.</xs:documentation>
 								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:token">
+										<xs:minLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
 							</xs:element>
 							<xs:element name="otherNames" minOccurs="0">
 								<xs:annotation>
@@ -59,13 +64,15 @@
 									<xs:sequence>
 										<xs:element name="otherName" maxOccurs="unbounded">
 											<xs:simpleType>
-												<xs:restriction base="xs:token"/>
+												<xs:restriction base="xs:token">
+													<xs:minLength value="1"/>
+												</xs:restriction>
 											</xs:simpleType>
 										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="isPublic" nillable="false">
+							<xs:element name="isPublic">
 								<xs:annotation>
 									<xs:documentation>The visibility of sample metadata. Use 1 for public and 0 for private samples.</xs:documentation>
 								</xs:annotation>
@@ -75,15 +82,15 @@
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="landingPage" nillable="false">
+							<xs:element name="landingPage">
 								<xs:annotation>
 									<xs:documentation>The landing page of a sample.</xs:documentation>
 								</xs:annotation>
-								<xs:complexType>
-									<xs:simpleContent>
-										<xs:extension base="xs:anyURI"/>
-									</xs:simpleContent>
-								</xs:complexType>
+								<xs:simpleType>
+									<xs:restriction base="xs:anyURI">
+										<xs:pattern value="https?://.+"/>
+									</xs:restriction>
+								</xs:simpleType>
 							</xs:element>
 							<xs:element name="sampleTypes" nillable="true">
 								<xs:annotation>
@@ -91,7 +98,7 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="sampleType" type="igsn:sampleType" nillable="false" maxOccurs="unbounded"/>
+										<xs:element name="sampleType" type="igsn:sampleType" maxOccurs="unbounded"/>
 									</xs:sequence>
 									<xs:attributeGroup ref="igsn:nullValue"/>
 								</xs:complexType>
@@ -102,7 +109,7 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="materialType" type="igsn:materialType" nillable="false" maxOccurs="unbounded"/>
+										<xs:element name="materialType" type="igsn:materialType" maxOccurs="unbounded"/>
 									</xs:sequence>
 									<xs:attributeGroup ref="igsn:nullValue"/>
 								</xs:complexType>
@@ -124,7 +131,9 @@
 									<xs:documentation>The purpose for collecting the sample.</xs:documentation>
 								</xs:annotation>
 								<xs:simpleType>
-									<xs:restriction base="xs:token"/>
+									<xs:restriction base="xs:token">
+										<xs:minLength value="1"/>
+									</xs:restriction>
 								</xs:simpleType>
 							</xs:element>
 							<xs:element name="samplingLocation" nillable="true">
@@ -159,7 +168,13 @@
 										<xs:element name="feature" maxOccurs="unbounded">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:element name="featureName" type="xs:string"/>
+													<xs:element name="featureName">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:minLength value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
 													<xs:element name="featureLocation" minOccurs="0">
 														<xs:complexType>
 															<xs:group ref="igsn:locationGroup">
@@ -215,21 +230,26 @@
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="samplingCampaign" type="xs:token" minOccurs="0">
+							<xs:element name="samplingCampaign" minOccurs="0">
 								<xs:annotation>
 									<xs:documentation>The field program/related projects.  e.g., cruise or expedition.</xs:documentation>
 								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:token">
+										<xs:minLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
 							</xs:element>
 							<xs:element name="sampleCuration" nillable="false">
 								<xs:annotation>
-									<xs:documentation>Sample archival information, e.g., contact information of the person who should be contacted for information about or access to the sample. Use curationLocation to indicate the address. </xs:documentation>
+									<xs:documentation>Sample archival information. The curator information must be specified. This can be present or future curator.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="curator" maxOccurs="unbounded">
+										<xs:element name="curation" maxOccurs="unbounded">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:element name="curatorName" type="xs:token"/>
+													<xs:element name="curator" type="xs:token"/>
 													<xs:element name="curationTime" minOccurs="0">
 														<xs:annotation>
 															<xs:documentation>The temporal information of sample curation</xs:documentation>
@@ -238,12 +258,11 @@
 															<xs:group ref="igsn:timeGroup"/>
 														</xs:complexType>
 													</xs:element>
-													<xs:element name="curationLocation" type="xs:token"/>
+													<xs:element name="curationLocation" type="xs:token" minOccurs="0"/>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
 									</xs:sequence>
-									<xs:attributeGroup ref="igsn:nullValue"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="relatedResources" minOccurs="0" maxOccurs="1">
@@ -265,10 +284,15 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="comments" type="xs:token" minOccurs="0">
+							<xs:element name="comments" minOccurs="0">
 								<xs:annotation>
 									<xs:documentation>Any free text describing the sample. This also can be used to include additional metadata which cannot be specified with this standard schema.</xs:documentation>
 								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:token">
+										<xs:minLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
 							</xs:element>
 							<xs:element name="logElement" nillable="false" minOccurs="1" maxOccurs="1">
 								<xs:annotation>
