@@ -165,17 +165,19 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="feature" maxOccurs="unbounded">
+										<xs:element name="samplingFeature" maxOccurs="unbounded">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:element name="featureName">
-														<xs:simpleType>
-															<xs:restriction base="xs:string">
-																<xs:minLength value="1"/>
-															</xs:restriction>
-														</xs:simpleType>
+													<xs:element name="samplingFeatureName">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:string">
+																	<xs:attribute name="samplingFeatureType" type="igsn:samplingFeature"/>
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
 													</xs:element>
-													<xs:element name="featureLocation" minOccurs="0">
+													<xs:element name="samplingFeatureLocation" minOccurs="0">
 														<xs:complexType>
 															<xs:group ref="igsn:locationGroup">
 																<xs:annotation>
@@ -185,8 +187,22 @@
 															</xs:group>
 														</xs:complexType>
 													</xs:element>
+													<xs:element name="sampledFeatures" minOccurs="0">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="sampledFeature" maxOccurs="unbounded">
+																	<xs:complexType>
+																		<xs:simpleContent>
+																			<xs:extension base="xs:token">
+																				<xs:attribute name="sampledFeatureType" type="xs:anyURI"/>
+																			</xs:extension>
+																		</xs:simpleContent>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
 												</xs:sequence>
-												<xs:attribute name="featureType" type="igsn:samplingFeature"/>
 											</xs:complexType>
 										</xs:element>
 									</xs:sequence>
