@@ -400,7 +400,7 @@
 			<xs:documentation>IGSN syntax data type</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:token">
-			<xs:pattern value="([A-Z]{2}[A-Za-z0-9\-.]*)"/>
+			<xs:pattern value="([A-Z]{2}[A-Za-z0-9\-.]+)"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<!--- xs:simpleType name="trueOrFalse">
