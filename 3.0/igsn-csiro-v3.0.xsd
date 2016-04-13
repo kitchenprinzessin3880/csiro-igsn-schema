@@ -30,7 +30,7 @@
 					</xs:annotation>
 					<xs:complexType>
 						<xs:all>
-							<xs:element name="sampleNumber">
+							<xs:element name="sampleIdentifier">
 								<xs:annotation>
 									<xs:documentation>(Required)The first two characters must be [A-Z] and represents the namespace of an allocating agent, e.g, CS is assigned to CSIRO. This is followed by 3 characters [A-Z] representing the client, as assigned by the respective allocating agent. The rest is the local sample code designated by the client. The rest can be a combination of characters, numbers and dash (-) and dot(.).</xs:documentation>
 								</xs:annotation>
