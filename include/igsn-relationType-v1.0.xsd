@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" targetNamespace="http://igsn.org/schema/kernel-v.1.0">
+	<xs:simpleType name="relationType">
+		<xs:annotation>
+			<xs:documentation>Description of the relationship of the resource being registered (A) and the related resource (B).</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="IsCitedBy"/>
+			<xs:enumeration value="IsPartOf"/>
+			<xs:enumeration value="HasPart"/>
+			<xs:enumeration value="IsReferencedBy"/>
+			<xs:enumeration value="References"/>
+			<xs:enumeration value="IsDocumentedBy"/>
+			<xs:enumeration value="Documents"/>
+			<xs:enumeration value="IsCompiledBy"/>
+			<xs:enumeration value="Compiles"/>
+			<xs:enumeration value="IsVariantFormOf"/>
+			<xs:enumeration value="IsOriginalFormOf"/>
+			<!--indicates that B includes A in a citation-->
+			<!--indicates A is a portion of B-->
+			<!--indicates A includes the part B-->
+			<!--indicates A is used as a source of information by B-->
+			<!--indicates B is used as a source of information for A-->
+			<!--indicates B is documentation about/explaining A-->
+			<!--indicates A is documentation about/explaining B-->
+			<!--indicates B is used to compile or create A, e.g. Collection B-->
+			<!--indicates B is the result of a compile or creation event using A, e.g. Collection B -->
+			<!--indicates B is a variant or different form of A, e.g. calculated or calibrated form or different packaging-->
+			<!--indicates B is the original form of A-->
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

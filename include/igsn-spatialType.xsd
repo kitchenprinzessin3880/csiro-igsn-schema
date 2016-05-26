@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:igsn="http://igsn.org/schema/kernel-v.1.0" targetNamespace="http://igsn.org/schema/kernel-v.1.0">
+	<!-- Type definition for valid spatial geometry types -->
+	<xs:simpleType name="spatialType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Point"/>
+			<xs:enumeration value="Linestring"/>
+			<xs:enumeration value="MultiPoint"/>
+			<xs:enumeration value="Polygon"/>
+			<xs:enumeration value="Geometry"/>
+			<xs:enumeration value="Geometry Collection"/>
+			<xs:enumeration value="Curve"/>
+			<xs:enumeration value="Line"/>
+			<xs:enumeration value="LinearRing"/>
+			<xs:enumeration value="MultiCurve"/>
+			<xs:enumeration value="MultiLineString"/>
+			<xs:enumeration value="Surface"/>
+			<xs:enumeration value="MultiSurface"/>
+			<xs:enumeration value="MultiPolygon"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
