@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cs:samples xmlns:cs="https://igsn.csiro.au/schemas/3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://igsn.csiro.au/schemas/3.0 igsn-csiro-v3.0.xsd">
+	<cs:sample>
+		<cs:sampleIdentifier identifierType="igsn">CSRWASC00630</cs:sampleIdentifier>
+		<cs:sampleName>SC00630</cs:sampleName>
+		<cs:isPublic>false</cs:isPublic>
+		<cs:landingPage>https://rockstore.csiro.au/arrc/#/browsesubcollections/CSRWASC00630</cs:landingPage>
+		<cs:sampleTypes xsi:nil="true" nilReason="http://www.opengis.net/def/nil/OGC/0/missing"/>
+		<cs:materialTypes>
+			<cs:materialType>http://vocabulary.odm2.org/medium/rock</cs:materialType>
+		</cs:materialTypes>
+		<cs:samplingLocation xsi:nil="true" nilReason="http://www.opengis.net/def/nil/OGC/0/missing"/>
+		<cs:samplingTime xsi:nil="true" nilReason="http://www.opengis.net/def/nil/OGC/0/missing"/>
+		<cs:sampledFeatures xsi:nil="true" nilReason="http://www.opengis.net/def/nil/OGC/0/missing"/>
+		<cs:sampleCollectors xsi:nil="true" nilReason="http://www.opengis.net/def/nil/OGC/0/missing"/>
+		<cs:samplingMethod xsi:nil="true" nilReason="http://www.opengis.net/def/nil/OGC/0/missing"/>
+		<cs:sampleCuration>
+			<cs:curation>
+				<cs:curator>CSIRO</cs:curator>
+				<cs:curationLocation>G9-L1, RockStore, 7 Conlon Street,Waterford WA 6152</cs:curationLocation>
+			</cs:curation>
+		</cs:sampleCuration>
+		<cs:logElement event="submitted" timeStamp="2015-08-17T09:32:00"/>
+	</cs:sample>
+</cs:samples>
