@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+	<xs:simpleType name="registrationType">
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/PhysicalSample"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/SampleCollection"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/SamplingFeature"/>
+			<!--  a sampling feature exists because of an intention to sample or represent one or more domain features, e.g.,  observation well); see OGC O&M. -->
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

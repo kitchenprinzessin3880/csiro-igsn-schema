@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+	<xs:simpleType name="identifierType">
+		<xs:annotation>
+			<xs:documentation>The type of identifier (adapted from datacite-relatedIdentifierType-v4.0.xsd)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ARK"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/DOI"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Handle"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ISBN"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ISNI"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ISSN"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/LSID"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ORCID"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/PURL"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/URL"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/URN"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/VIAF"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IGSN"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/arXiv"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/bibcode"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/EAN13"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/EISSN"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ISTC"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/PMID"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/LISSN"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/UPC"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

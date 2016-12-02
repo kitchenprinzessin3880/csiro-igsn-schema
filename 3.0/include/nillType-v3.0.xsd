@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Anusuriya Devaraju (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+	<xs:simpleType name="NilReasonType">
+		<xs:annotation>
+			<xs:documentation>gml:NilReasonType defines a content model that allows recording of an explanation for a void value or other exception.gml:NilReasonType is a union of the following enumerated values:
+-	inapplicable : there is no value
+-	missing: the correct value is not readily available to the sender of this data. Furthermore, a correct value may not exist
+-	template: the value will be available later
+-	unknown: the correct value is not known to, and not computable by, the sender of this data. However, a correct value probably exists
+-	withheld: the value is not divulged. Note: The nil reason types may be extended with standard values for unknown information from the datacite metadata schema v4.0 (Appendix 3, page 45)</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration value="http://www.opengis.net/def/nil/OGC/0/missing"/>
+			<xs:enumeration value="http://www.opengis.net/def/nil/OGC/0/inapplicable"/>
+			<xs:enumeration value="http://www.opengis.net/def/nil/OGC/0/template"/>
+			<xs:enumeration value="http://www.opengis.net/def/nil/OGC/0/unknown"/>
+			<xs:enumeration value="http://www.opengis.net/def/nil/OGC/0/withheld"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+	<xs:simpleType name="contributorType" id="contributorType">
+		<xs:annotation>
+			<xs:documentation>The type of contributor of the resource (adapted from datacite-contributorType-v4.0.xsd'). A full list of definitions available at http://pid.geoscience.gov.au/def/voc/igsn-codelists/contributorType</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ContactPerson"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Funder"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Other"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ProjectLeader"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ProjectManager"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ProjectMember"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/RelatedPerson"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ResearchGroup"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/RightsHolder"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Researcher"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Sponsor"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Supervisor"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

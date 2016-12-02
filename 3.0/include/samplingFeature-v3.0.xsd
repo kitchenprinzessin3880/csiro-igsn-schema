@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+	<xs:simpleType name="samplingFeature">
+		<xs:annotation>
+			<xs:documentation>A vocabulary for describing the type of Sampling Feature. SamplingFeatures of type Site and Well will be the most common, but many different types of varying levels of complexity can be used. Source vocabularies: http://vocabulary.odm2.org/samplingfeaturetype/</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration value="http://vocabulary.odm2.org/samplingfeaturetype/borehole/"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/samplingfeaturetype/crossSection/"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/samplingfeaturetype/CTD/"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/samplingfeaturetype/scene/"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/samplingfeaturetype/quadrat/"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/samplingfeaturetype/soilPitSection/"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/samplingfeaturetype/observationWell/"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/samplingfeaturetype/fieldArea/"/>
+			<xs:enumeration value="http://vocabulary.odm2.org/samplingfeaturetype/excavation/"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

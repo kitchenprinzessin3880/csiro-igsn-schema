@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2016 rel. 2 (x64) (http://www.altova.com) by Anusuriya Devaraju (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+	<xs:simpleType name="eventType">
+		<xs:annotation>
+			<xs:documentation>The status type of a resource and its registration. </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="registered"/>
+			<xs:enumeration value="updated"/>
+			<xs:enumeration value="deprecated"/>
+			<xs:enumeration value="destroyed"/>
+			<!-- registered - The date of registration. -->
+			<!-- updated - Date of the last metadata update. -->
+			<!-- deprecated - The resource registration is deprecated. The resource is no longer relevant, e.g. due to duplicate registration. -->
+			<!-- destroyed - The resource is destroyed. -->
+			<!--xs:enumeration value="registered"/-->
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

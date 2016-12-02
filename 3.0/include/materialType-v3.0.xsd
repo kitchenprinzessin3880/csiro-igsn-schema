@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Anusuriya Devaraju (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+	<xs:simpleType name="materialType">
+		<xs:annotation>
+			<xs:documentation>Categorize the materials that compose a resource. Adapted from http://vocabulary.odm2.org/medium/. For all material types, see http://pid.geoscience.gov.au/def/voc/igsn-codelists/materialType </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/snow"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/soil"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/tissue"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/particulate"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/rock"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/sediment"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/other"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/mineral"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/notApplicable"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/organism"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/liquidAqueous"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/liquidOrganic"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/air"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/gas"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ice"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/habitat"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/regolith"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Anusuriya Devaraju (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+	<xs:simpleType name="spatialRefType">
+		<xs:annotation>
+			<xs:documentation>The EPSG Geodetic Parameter Dataset is a structured dataset of Coordinate Reference Systems and Coordinate Transformations. EPSG codes of horizontal/vertical reference system are available at https://epsg.io/ </xs:documentation>
+			<!-- EPSG:4326 (WGS84 - World Geodetic System 1984, used in GPS), EPSG:5711 (Vertical coordinate system AHD height), EPSG:4939 (Geodetic 3D coordinate system GDA94), 
+EPSG:4283 (Geodetic coordinate system (GDA94)), EPSG:3112 (Projected coordinate system GDA94 / Geoscience Australia Lambert), EPSG:5712 (Vertical coordinate system AHD (Tasmania) height) -->
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration value="https://epsg.io/4326"/>
+			<xs:enumeration value="https://epsg.io/3112"/>
+			<xs:enumeration value="https://epsg.io/4939"/>
+			<xs:enumeration value="https://epsg.io/4283"/>
+			<xs:enumeration value="https://epsg.io/5711"/>
+			<xs:enumeration value="https://epsg.io/5712"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

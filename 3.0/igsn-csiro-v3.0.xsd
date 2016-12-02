@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
+<xs:schema xmlns:cs="https://igsn.csiro.au/schemas/3.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink/namespace" targetNamespace="https://igsn.csiro.au/schemas/3.0" elementFormDefault="qualified" version="3.0">
+	<xs:include schemaLocation="include/resourceType-v3.0.xsd"/>
+	<xs:include schemaLocation="include/samplingFeature-v3.0.xsd"/>
+	<xs:include schemaLocation="include/materialType-v3.0.xsd"/>
+	<xs:include schemaLocation="include/geometryType-v3.0.xsd"/>
+	<xs:include schemaLocation="include/nillType-v3.0.xsd"/>
+	<xs:include schemaLocation="include/registrationType-v3.0.xsd"/>
+	<xs:include schemaLocation="include/contributorType-v3.0.xsd"/>
+	<xs:include schemaLocation="include/dateType-v3.0.xsd"/>
+	<xs:include schemaLocation="include/identifierType-v3.0.xsd"/>
+	<xs:include schemaLocation="include/eventType-v3.0.xsd"/>
+	<xs:include schemaLocation="include/relationType-v3.0.xsd"/>
+	<xs:include schemaLocation="include/spatialReferenceType-v3.0.xsd"/>
+	<!-- xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/basicTypes.xsd"/ -->
+	<!-- xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance"/ -->
+	<xs:element name="resources">
+		<xs:annotation>
+			<xs:documentation>A batch of resouces that will registered with IGSNs. </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<!--xs:element name="subNamespace" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>The subnamespace of the data center registering the samples</xs:documentation>
+					</xs:annotation>
+				</xs:element -->
+				<xs:element name="resource" minOccurs="1" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>A resource may refer to a physical sample (specimen), a collection, i.e., physical o logical grouping of physical samples, or a sampling feature (see OGC Observations and Measurements )</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="resourceIdentifier">
+								<xs:annotation>
+									<xs:documentation>The IGSN code of a resource, e.g., CSRWASC111. The first two characters must be [A-Z] and specify the namespace of an allocating agent. The CS namespace has been assigned to CSIRO. This is followed by 3 characters [A-Z] representing the client, as designated by the allocating agent. The rest characters represent the local sample code specified by the client. This can be a combination of characters, numbers and dash (-) and dot (.). See the xsd pattern constraint.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="cs:igsnSyntax"/>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<!-- sample number, e.g., igsn -->
+							<xs:element name="landingPage">
+								<xs:annotation>
+									<xs:documentation>The landing page of a resource. This page contains more detailed (domain-specific) information about the resource.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:anyURI">
+										<xs:pattern value="https?://.+"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="isPublic" default="true">
+								<xs:annotation>
+									<xs:documentation>The visibility of a resource's metadata. Use 'true' for public and 'false' for private samples.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:boolean"/>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="resourceTitle">
+								<xs:annotation>
+									<xs:documentation>The name, descriptive phrase or title of the resource.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:token">
+										<xs:minLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="alternateIdentifiers" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Alternate identifiers of the resource, including the local and other web-resolvable identifiers.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="alternateIdentifier" type="xs:token" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Please include the full form of a web-resolvable identifier. For example, 'urn:lsid:ubio.org:namebank:11815', 'urn:ietf:rfc:2648'.</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="resourceTypes" nillable="true">
+								<xs:annotation>
+									<xs:documentation>The physical form of a resource, e.g. core, cuttings and grab. See the controlled list "include/resourceType.xsd".</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="resourceType" maxOccurs="unbounded">
+											<xs:simpleType>
+												<xs:union memberTypes="cs:resourceType cs:NilReasonType"/>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="materialTypes" nillable="true">
+								<xs:annotation>
+									<xs:documentation>The materials of which the resource is made, e.g., rock, sediment, and soil. See the controlled list "include/materialType.xsd"</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="materialType" maxOccurs="unbounded">
+											<xs:simpleType>
+												<xs:union memberTypes="cs:materialType cs:NilReasonType"/>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="classifications" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Domain-specific classification codes, i.e. other concepts describing the physical form, function or type of the resource. </xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="classification" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attribute name="classificationURI" type="xs:anyURI">
+													<xs:annotation>
+														<xs:documentation>You may use the attribute classifictionIdentifier to indicate the URI of the concept.</xs:documentation>
+													</xs:annotation>
+												</xs:attribute>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="purpose" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The purpose for collecting/creating the resource.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:token">
+										<xs:minLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="sampledFeatures" nillable="true" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>This element is mainly applicable to physical samples and sample collections. It represents a domain feature, e.g., a borehole core may sample multiple geologic units.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="sampledFeature" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:token">
+														<xs:attribute name="sampledFeatureURI" type="xs:anyURI">
+															<xs:annotation>
+																<xs:documentation>You may use this attribute to specify the link associated with a sampled feature.</xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="location" nillable="true" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The location where the resource was found/collected (sampling feature,specimen) or created (synthetic materials). This may refer to a geo-location (in WKT) or a locality (aka. toponym). For a spatial location, the srid attribute may be used to indicate the spatial reference system (in EPSG). </xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:group ref="cs:locationGroup">
+										<xs:annotation>
+											<xs:documentation>
+			</xs:documentation>
+										</xs:annotation>
+									</xs:group>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="date" nillable="true" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The time period or date of the collection/creation of the resource.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:group ref="cs:timeGroup">
+										<xs:annotation>
+											<xs:documentation>Represents a time instant or a time period (start,end).</xs:documentation>
+										</xs:annotation>
+									</xs:group>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="collectors" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Name of the person who collected/created the resource; typically used for samples and sample collections. </xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="collector" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="collectorName">
+														<xs:simpleType>
+															<xs:restriction base="xs:token">
+																<xs:minLength value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="collectorIdentifier" minOccurs="0">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:token">
+																	<xs:attribute name="collectorIdentifierType" type="cs:identifierType" use="optional"/>
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="method" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The method/instrument by which the resource was collected/created, e.g., Dredging, Manual Observation. </xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="xs:token"/>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="campaign" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>The field program/related projects, e.g., cruise or expedition; typically used for samples and sample collections.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:token">
+										<xs:minLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="curationDetails" nillable="false">
+								<xs:annotation>
+									<xs:documentation>Resource archival information, mainly applicable to physical samples and sample colletions. The curating instuition must be specified. This can be present or future curator.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="curation" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="curator" type="xs:token" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>The full name of a resource curator.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="curationDate" type="cs:W3CDTFdate" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>The date the resource was moved to its current location.</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="curationLocation" type="xs:token" minOccurs="0">
+														<xs:annotation>
+															<xs:documentation>The location (address) where the resource is stored. This can be general or specific (room number, building name).</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+													<xs:element name="curatingInstitution">
+														<xs:complexType>
+															<xs:attribute name="institutionURI" type="xs:anyURI"/>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="contributors" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Use this element to give recognition of those who contributed to the resource(s).</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="contributor" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="contributorName">
+														<xs:simpleType>
+															<xs:restriction base="xs:token">
+																<xs:minLength value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="contributorIdentifier" minOccurs="0">
+														<xs:complexType>
+															<xs:simpleContent>
+																<xs:extension base="xs:token">
+																	<xs:attribute name="contributorIdentifierType" type="cs:identifierType" use="required"/>
+																</xs:extension>
+															</xs:simpleContent>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="contributorType" type="cs:contributorType" use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="relatedResourceIdentifiers" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="relatedResourceIdentifier" maxOccurs="unbounded">
+											<xs:annotation>
+												<xs:documentation>Identifiers of related resources. Use this element to indicate related resources, documents, events, domain features, etc.</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="relatedIdentifierType" type="cs:identifierType" use="required"/>
+														<xs:attribute name="relationType" type="cs:relationType" use="required">
+															<xs:annotation>
+																<xs:documentation>The relationship between the resource being registered and other entity (e.g., event, document, parent sample, etc.) </xs:documentation>
+															</xs:annotation>
+														</xs:attribute>
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="comments" minOccurs="0">
+								<xs:annotation>
+									<xs:documentation>Any free text describing the resource.This can also be used to include additional metadata which cannot be specified with the standard schema elements.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:token"/>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="logDate" nillable="false">
+								<xs:annotation>
+									<xs:documentation>Use this element to indicate an event (the status of a resource or its registration) and its timestamp.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:simpleContent>
+										<xs:extension base="cs:W3CDTFdate">
+											<xs:attribute name="eventType" type="cs:eventType" use="required"/>
+										</xs:extension>
+									</xs:simpleContent>
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+						<xs:attribute name="registrationType" type="cs:registrationType" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:group name="timeGroup">
+		<xs:annotation>
+			<xs:documentation>Represents a time instant or a time period (start,end).</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="timeInstant" type="cs:W3CDTFdate" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="timePeriod" minOccurs="0" maxOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="start" type="cs:W3CDTFdate"/>
+						<xs:element name="end" type="cs:W3CDTFdate"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:group>
+	<xs:group name="locationGroup">
+		<xs:annotation>
+			<xs:documentation>This may apply to a named place (locality) or the geometry of a spatial location, e.g., WKT representation. The srid attribute indicates a Spatial Reference System Identifier (SRID).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:all>
+			<xs:element name="locality" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The named place/toponym or address. You may use the attribute localityIdentifier to denote the web location of a place.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:token">
+							<xs:attribute name="localityURI" type="xs:anyURI"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="geometry" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The Well Known Text (WKT) representation of a resource's location. For example: POINT(123.45 543.21). Use the following websites to determine the relevant EPSG codes of horizontal/vertical reference systems: (a) http://spatialreference.org (b) https://epsg.io/</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:token">
+							<xs:attribute name="srid" type="cs:spatialRefType" use="optional">
+								<xs:annotation>
+									<xs:documentation>This refers to the spatial referencing system identifier (SRID). Specify an EPSG code, e.g., "4326" is the EPSG code for the WGS84 referenced coordinate system.</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="verticalDatum" type="cs:spatialRefType" use="optional">
+								<xs:annotation>
+									<xs:documentation>A vertical datums specify the origin for elevations assocated with a resource. Specify the EPSG vertical coordinate reference system code. For example, 5711 refers is the epsg code of the Australian Height Datum (AHD). </xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+							<xs:attribute name="geometryURI" type="xs:anyURI"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+	</xs:group>
+	<xs:simpleType name="igsnSyntax">
+		<xs:annotation>
+			<xs:documentation>IGSN syntax data type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:token">
+			<xs:pattern value="([A-Z]{2}[A-Za-z0-9\-.]+)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--- xs:simpleType name="trueOrFalse">
+		<xs:restriction base="xs:boolean">
+			<xs:pattern value="0"/>
+			<xs:pattern value="1"/>
+		</xs:restriction>
+	</xs:simpleType -->
+	<!--xs:simpleType name="StringOrNillValues">
+		<xs:union memberTypes="xs:anyURI igsn:NilReasonType"/>
+	</xs:simpleType -->
+</xs:schema>

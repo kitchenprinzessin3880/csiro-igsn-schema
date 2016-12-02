@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+	<!-- Type definition for valid spatial geometry types -->
+	<xs:simpleType name="geometryType">
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Point"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Linestring"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/MultiPoint"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Polygon"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Geometry"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/GeometryCollection"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Curve"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Line"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/LinearRing"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/MultiCurve"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/MultiLineString"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Surface"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/MultiSurface"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/MultiPolygon"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

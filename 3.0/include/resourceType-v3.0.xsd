@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Anusuriya Devaraju (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+	<xs:simpleType name="resourceType">
+		<xs:annotation>
+			<xs:documentation>Describes the basic form of the resource registered; mainly applicable to physical samples and sample collections. Adapted from http://vocabulary.odm2.org/specimentype/. For a list of resource types, see http://pid.geoscience.gov.au/def/voc/igsn-codelists/sampleType </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/thinSection"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/other"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/petriDishDryDeposition"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/precipitationBulk"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/rockPowder"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/standardReferenceSpecimen"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/terrestrialSection"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/orientedCore"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/automated"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/core"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/coreHalfRound"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/corePiece"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/coreQuarterRound"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/coreSection"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/coreSectionHalf"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/coreSub-Piece"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/coreWholeRound"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/cuttings"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/dredge"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/foliageDigestion"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/foliageLeaching"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/forestFloorDigestion"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/individualSample"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/litterFallDigestion"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/grab"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

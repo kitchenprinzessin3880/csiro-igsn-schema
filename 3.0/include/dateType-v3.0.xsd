@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2016 rel. 2 (x64) (http://www.altova.com) by Anusuriya Devaraju (CSIRO) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
+		<xs:annotation>
+			<xs:documentation>Temporal information (instant and inetrval) (modified from igsn-dateType-v1.1.xsd)</xs:documentation>
+		</xs:annotation>
+	<xs:simpleType name="dateTimeWithoutMinutes">
+		<xs:annotation>
+			<xs:documentation>2011-10-05T08:00</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{4}-\d\d-\d\dT\d\d:\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="dateTimeWithoutMinutesPlusTimeZone">
+		<xs:annotation>
+			<xs:documentation>2011-10-05T08:00+00:00</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{4}-\d\d-\d\dT\d\d:\d\d\+\d\d:\d\d"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="W3CDTFdate">
+		<xs:annotation>
+			<xs:documentation>Definition of W3CDTF compliant date. see: http://www.w3.org/TR/NOTE-datetime</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="xs:gYear xs:gYearMonth xs:date xs:dateTime cs:dateTimeWithoutMinutes cs:dateTimeWithoutMinutesPlusTimeZone"/>
+	</xs:simpleType>
+</xs:schema>
