@@ -352,7 +352,7 @@
 								</xs:complexType>
 							</xs:element>
 						</xs:all>
-						<xs:attribute name="registrationType" type="cs:registrationType" use="required"/>
+						<xs:attribute name="registeredObjectType" type="cs:registrationType" use="required"/>
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>

@@ -14,6 +14,7 @@
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsIdenticalTo"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsDocumentedBy"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Participates"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/hasDigitalRepresentation"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsDigitalRepresentationOf"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/SamplingFeature"/>
 			<!-- HasMetadata - indicates resource A has additional metadata B -->
