@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cs:resources xsi:schemaLocation="https://igsn.csiro.au/schemas/3.0 igsn-csiro-v3.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cs="https://igsn.csiro.au/schemas/3.0">
+  <cs:resource registeredObjectType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/PhysicalSample">
+    <cs:resourceIdentifier>AU1000011</cs:resourceIdentifier>
+    <cs:landingPage>https://pid.geoscience.gov.au/sample/AU1000011</cs:landingPage>
+    <cs:resourceTitle>Sample igsn:AU1000011</cs:resourceTitle>
+    <cs:isPublic>true</cs:isPublic>
+    <cs:resourceTypes>
+      <cs:resourceType>http://www.opengis.net/def/nil/OGC/0/missing</cs:resourceType>
+    </cs:resourceTypes>
+    <cs:materialTypes>
+      <cs:materialType>http://pid.geoscience.gov.au/def/voc/igsn-codelists/rock</cs:materialType>
+    </cs:materialTypes>
+    <cs:method>http://www.opengis.net/def/nil/OGC/0/missing</cs:method>
+    <cs:location>
+      <cs:geometry srid="https://epsg.io/8311" verticalDatum="https://epsg.io/4283">POINTZ(121.3724129 -15.47114123 -155.7502)</cs:geometry>
+    </cs:location>
+    <cs:curationDetails>
+      <cs:curation>
+        <cs:curator>Geoscience Australia</cs:curator>
+        <cs:curationDate>2016</cs:curationDate>
+        <cs:curationLocation>Geoscience Australia, Jerrabomberra Ave, Symonston, ACT, Australia</cs:curationLocation>
+        <cs:curatingInstitution institutionURI="http://pid.geoscience.gov.au/org/ga"/>
+      </cs:curation>
+    </cs:curationDetails>
+    <cs:alternateIdentifiers>
+      <cs:alternateIdentifier>1000011</cs:alternateIdentifier>
+    </cs:alternateIdentifiers>
+  <cs:logDate eventType="registered">2016-10-10</cs:logDate>
+  </cs:resource>
+</cs:resources>

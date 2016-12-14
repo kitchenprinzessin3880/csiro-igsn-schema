@@ -16,7 +16,8 @@
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Participates"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/hasDigitalRepresentation"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsDigitalRepresentationOf"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/SamplingFeature"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/hasSamplingFeature"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsSamplingFeatureOf"/>
 			<!-- HasMetadata - indicates resource A has additional metadata B -->
 			<!-- IsDerivedFrom - indicates that the resource is created/obtained from a parent resource-->
 			<!-- IsSourceOf - inverse relation of derivedFrom; indicates the resource A is a source upon which the resource B is based).-->

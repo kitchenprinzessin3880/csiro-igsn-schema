@@ -14,6 +14,7 @@ EPSG:4283 (Geodetic coordinate system (GDA94)), EPSG:3112 (Projected coordinate 
 			<xs:enumeration value="https://epsg.io/4283"/>
 			<xs:enumeration value="https://epsg.io/5711"/>
 			<xs:enumeration value="https://epsg.io/5712"/>
+			<xs:enumeration value="https://epsg.io/8311"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
