@@ -227,7 +227,9 @@
 								</xs:annotation>
 								<xs:complexType>
 									<xs:simpleContent>
-										<xs:extension base="xs:token"/>
+										<xs:extension base="xs:token">
+											<xs:attribute name="methodURI" type="xs:anyURI"/>
+										</xs:extension>
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>
