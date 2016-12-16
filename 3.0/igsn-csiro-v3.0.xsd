@@ -308,10 +308,10 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="relatedResourceIdentifiers" minOccurs="0">
+							<xs:element name="relatedResources" minOccurs="0">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="relatedResourceIdentifier" maxOccurs="unbounded">
+										<xs:element name="relatedResource" maxOccurs="unbounded">
 											<xs:annotation>
 												<xs:documentation>Identifiers of related resources. Use this element to indicate related resources, documents, events, domain features, etc.</xs:documentation>
 											</xs:annotation>
