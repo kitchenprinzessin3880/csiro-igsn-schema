@@ -269,7 +269,11 @@
 													</xs:element>
 													<xs:element name="curatingInstitution">
 														<xs:complexType>
-															<xs:attribute name="institutionURI" type="xs:anyURI"/>
+															<xs:simpleContent>
+																<xs:extension base="xs:token">
+																	<xs:attribute name="institutionURI" type="xs:anyURI"/>
+																</xs:extension>
+															</xs:simpleContent>
 														</xs:complexType>
 													</xs:element>
 												</xs:sequence>

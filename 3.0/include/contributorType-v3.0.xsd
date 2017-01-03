@@ -5,18 +5,17 @@
 			<xs:documentation>The type of contributor of the resource (adapted from datacite-contributorType-v4.0.xsd'). A full list of definitions available at http://pid.geoscience.gov.au/def/voc/igsn-codelists/contributorType</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:anyURI">
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ContactPerson"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Funder"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Other"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ProjectLeader"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ProjectManager"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ProjectMember"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/RelatedPerson"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ResearchGroup"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/RightsHolder"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Researcher"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Sponsor"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Supervisor"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/pointOfContact"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/funder"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/processor"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/principalInvestigator"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/contributor"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/collaborator"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/rightsHolder"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/owner"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/sponsor"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/stakeholder"/>
+			<xs:enumeration value="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/user"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
