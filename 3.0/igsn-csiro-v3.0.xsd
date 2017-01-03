@@ -320,7 +320,7 @@
 											<xs:complexType>
 												<xs:simpleContent>
 													<xs:extension base="xs:string">
-														<xs:attribute name="relatedIdentifierType" type="cs:identifierType" use="required"/>
+														<xs:attribute name="relatedResourceIdentifierType" type="cs:identifierType" use="required"/>
 														<xs:attribute name="relationType" type="cs:relationType" use="required">
 															<xs:annotation>
 																<xs:documentation>The relationship between the resource being registered and other entity (e.g., event, document, parent sample, etc.) </xs:documentation>

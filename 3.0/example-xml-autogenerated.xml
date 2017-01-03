@@ -51,9 +51,9 @@
 				<cs:contributorIdentifier contributorIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ARK">token</cs:contributorIdentifier>
 			</cs:contributor>
 		</cs:contributors>
-		<cs:relatedResourceIdentifiers>
-			<cs:relatedResourceIdentifier relatedIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/DOI" relationType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/HasMetadata">String</cs:relatedResourceIdentifier>
-		</cs:relatedResourceIdentifiers>
+		<cs:relatedResources>
+			<cs:relatedResource relatedIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/DOI" relationType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/HasMetadata">String</cs:relatedResource>
+		</cs:relatedResources>
 		<cs:comments>token</cs:comments>
 		<cs:logDate eventType="registered">2001</cs:logDate>
 	</cs:resource>
