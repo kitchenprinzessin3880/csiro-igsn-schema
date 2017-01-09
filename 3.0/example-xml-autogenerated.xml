@@ -13,10 +13,10 @@
 			<cs:resourceType>http://pid.geoscience.gov.au/def/voc/igsn-codelists/thinSection</cs:resourceType>
 		</cs:resourceTypes>
 		<cs:materialTypes>
-			<cs:materialType>http://pid.geoscience.gov.au/def/voc/igsn-codelists/rock</cs:materialType>
+			<cs:materialType>http://pid.geoscience.gov.au/def/voc/igsn-codelists/snow</cs:materialType>
 		</cs:materialTypes>
 		<cs:classifications>
-			<cs:classification classificationURI="http://www.altova.com"/>
+			<cs:classification classificationURI="http://www.altova.com">token</cs:classification>
 		</cs:classifications>
 		<cs:purpose>a</cs:purpose>
 		<cs:sampledFeatures>
@@ -32,27 +32,27 @@
 		<cs:collectors>
 			<cs:collector>
 				<cs:collectorName>a</cs:collectorName>
-				<cs:collectorIdentifier collectorIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ARK">token</cs:collectorIdentifier>
+				<cs:collectorIdentifier collectorIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ORCID">token</cs:collectorIdentifier>
 			</cs:collector>
 		</cs:collectors>
-		<cs:method>token</cs:method>
+		<cs:method methodURI="http://www.altova.com">token</cs:method>
 		<cs:campaign>a</cs:campaign>
 		<cs:curationDetails>
 			<cs:curation>
 				<cs:curator>token</cs:curator>
 				<cs:curationDate>2001</cs:curationDate>
 				<cs:curationLocation>token</cs:curationLocation>
-				<cs:curatingInstitution institutionURI="http://www.altova.com"/>
+				<cs:curatingInstitution institutionURI="http://www.altova.com">token</cs:curatingInstitution>
 			</cs:curation>
 		</cs:curationDetails>
 		<cs:contributors>
-			<cs:contributor contributorType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ContactPerson">
+			<cs:contributor contributorType="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/pointOfContact">
 				<cs:contributorName>a</cs:contributorName>
-				<cs:contributorIdentifier contributorIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ARK">token</cs:contributorIdentifier>
+				<cs:contributorIdentifier contributorIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ORCID">token</cs:contributorIdentifier>
 			</cs:contributor>
 		</cs:contributors>
 		<cs:relatedResources>
-			<cs:relatedResource relatedIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/DOI" relationType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/HasMetadata">String</cs:relatedResource>
+			<cs:relatedResource relatedResourceIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/DOI" relationType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/HasMetadata">String</cs:relatedResource>
 		</cs:relatedResources>
 		<cs:comments>token</cs:comments>
 		<cs:logDate eventType="registered">2001</cs:logDate>
