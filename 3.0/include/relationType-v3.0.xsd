@@ -5,11 +5,10 @@
 			<xs:documentation>Description of the relationship between the resource being registered and other entities (e.g., events, documents, etc.) - adopted from datacite-relationType-v4.0.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:anyURI">
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/HasMetadata"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsDerivedFrom"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/isDerivedFrom"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsSourceOf"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsCompiledBy"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Compiles"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsAggregateOf"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsMemberOf"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/HasReferenceResource"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsIdenticalTo"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsDocumentedBy"/>
@@ -18,11 +17,10 @@
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsDigitalRepresentationOf"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/hasSamplingFeature"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsSamplingFeatureOf"/>
-			<!-- HasMetadata - indicates resource A has additional metadata B -->
 			<!-- IsDerivedFrom - indicates that the resource is created/obtained from a parent resource-->
 			<!-- IsSourceOf - inverse relation of derivedFrom; indicates the resource A is a source upon which the resource B is based).-->
-			<!-- Compiles - indicates that the resource is an arbitrary aggregation of the related (target) resource-->
-			<!-- IsCompiledBy - indicates the related resource is used to compile or create the resource being registered -->
+			<!-- IsAggregateOf - indicates that the resource is an arbitrary aggregation of the related (target) resource-->
+			<!-- IsMemberOf - inverse relation of isAggregateOf; indicates the registered resource is used to compile or create the target resource -->
 			<!-- hasReferenceResource - indicates the relation between a sample and its reference sample. A physical sample is usually inspected for identity, physical purity and compared with a reference sample. -->
 			<!-- IsIdenticalTo - a resource that is the same as the registered resource -->
 			<!-- IsDocumentedBy - indicates the documentation of the resource, including datasets, reports, images, supplementary metadata, etc. -->

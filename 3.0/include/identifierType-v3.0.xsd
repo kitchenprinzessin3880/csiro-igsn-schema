@@ -9,6 +9,7 @@
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ARK"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/DOI"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Handle"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IGSN"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ISBN"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ISNI"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ISSN"/>
@@ -18,7 +19,6 @@
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/URL"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/URN"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/VIAF"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IGSN"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/arXiv"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/bibcode"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/EAN13"/>
