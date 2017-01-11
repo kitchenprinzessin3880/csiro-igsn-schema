@@ -409,7 +409,7 @@
 				<xs:complexType>
 					<xs:simpleContent>
 						<xs:extension base="xs:token">
-							<xs:attribute name="srid" type="cs:spatialRefType" use="optional">
+							<xs:attribute name="srid" type="cs:spatialRefType" use="required">
 								<xs:annotation>
 									<xs:documentation>This refers to the spatial referencing system identifier (SRID). Specify an EPSG code, e.g., "4326" is the EPSG code for the WGS84 referenced coordinate system.</xs:documentation>
 								</xs:annotation>
