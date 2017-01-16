@@ -20,7 +20,7 @@
 			<!-- IsDerivedFrom - indicates that the resource is created/obtained from a parent resource-->
 			<!-- IsSourceOf - inverse relation of derivedFrom; indicates the resource A is a source upon which the resource B is based).-->
 			<!-- IsAggregateOf - indicates that the resource is an arbitrary aggregation of the related (target) resource-->
-			<!-- IsMemberOf - inverse relation of isAggregateOf; indicates the registered resource is used to compile or create the target resource -->
+			<!-- IsMemberOf - inverse relation of isAggregateOf; indicates the registered resource is used to compile or create the target resource (related resource) -->
 			<!-- hasReferenceResource - indicates the relation between a sample and its reference sample. A physical sample is usually inspected for identity, physical purity and compared with a reference sample. -->
 			<!-- IsIdenticalTo - a resource that is the same as the registered resource -->
 			<!-- IsDocumentedBy - indicates the documentation of the resource, including datasets, reports, images, supplementary metadata, etc. -->
