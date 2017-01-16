@@ -194,37 +194,6 @@
 									</xs:group>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="collectors" minOccurs="0">
-								<xs:annotation>
-									<xs:documentation>Name of the person who collected/created the resource; typically used for samples and sample collections. </xs:documentation>
-								</xs:annotation>
-								<xs:complexType>
-									<xs:sequence>
-										<xs:element name="collector" maxOccurs="unbounded">
-											<xs:complexType>
-												<xs:sequence>
-													<xs:element name="collectorName">
-														<xs:simpleType>
-															<xs:restriction base="xs:token">
-																<xs:minLength value="1"/>
-															</xs:restriction>
-														</xs:simpleType>
-													</xs:element>
-													<xs:element name="collectorIdentifier" minOccurs="0">
-														<xs:complexType>
-															<xs:simpleContent>
-																<xs:extension base="xs:token">
-																	<xs:attribute name="collectorIdentifierType" type="cs:identifierType" use="optional"/>
-																</xs:extension>
-															</xs:simpleContent>
-														</xs:complexType>
-													</xs:element>
-												</xs:sequence>
-											</xs:complexType>
-										</xs:element>
-									</xs:sequence>
-								</xs:complexType>
-							</xs:element>
 							<xs:element name="method" minOccurs="0">
 								<xs:annotation>
 									<xs:documentation>The method/instrument by which the resource was collected/created, e.g., Dredging, Manual Observation. </xs:documentation>
@@ -288,7 +257,7 @@
 							</xs:element>
 							<xs:element name="contributors" minOccurs="0">
 								<xs:annotation>
-									<xs:documentation>Use this element to give recognition of those who contributed to the resource(s).</xs:documentation>
+									<xs:documentation>Use this element to give recognition of those who contributed to the resource(s). Use contributor type 'originator' to indicate a sample collector/creator.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:sequence>

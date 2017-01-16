@@ -29,12 +29,6 @@
 		<cs:date>
 			<cs:timeInstant>2001</cs:timeInstant>
 		</cs:date>
-		<cs:collectors>
-			<cs:collector>
-				<cs:collectorName>a</cs:collectorName>
-				<cs:collectorIdentifier collectorIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ORCID">token</cs:collectorIdentifier>
-			</cs:collector>
-		</cs:collectors>
 		<cs:method methodURI="http://www.altova.com">token</cs:method>
 		<cs:campaign>a</cs:campaign>
 		<cs:curationDetails>
@@ -52,7 +46,7 @@
 			</cs:contributor>
 		</cs:contributors>
 		<cs:relatedResources>
-			<cs:relatedResource relatedResourceIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/DOI" relationType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/HasMetadata">String</cs:relatedResource>
+			<cs:relatedResource relatedResourceIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/DOI" relationType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/hasDigitalRepresentation">String</cs:relatedResource>
 		</cs:relatedResources>
 		<cs:comments>token</cs:comments>
 		<cs:logDate eventType="registered">2001</cs:logDate>

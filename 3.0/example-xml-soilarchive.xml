@@ -26,11 +26,6 @@
 			<cs:timeInstant>1959-10-08</cs:timeInstant>
 		</cs:date>
 		<cs:method methodURI="http://www.anzsoil.org/def/au/soil/observation-method/soil-pit">Soil pit</cs:method>
-		<cs:collectors>
-			<cs:collector>
-				<cs:collectorName>CSIRO Division of Soils (NSW)</cs:collectorName>
-			</cs:collector>
-		</cs:collectors>
 		<cs:curationDetails>
 			<cs:curation>
 				<cs:curatingInstitution>CSIRO Land and Water</cs:curatingInstitution>
@@ -39,6 +34,9 @@
 		<cs:contributors>
 			<cs:contributor contributorType="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/owner">
 				<cs:contributorName>CSIRO Land and Water</cs:contributorName>
+			</cs:contributor>
+			<cs:contributor contributorType="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/originator">
+				<cs:contributorName>CSIRO Division of Soils (NSW)</cs:contributorName>
 			</cs:contributor>
 		</cs:contributors>
 		<cs:relatedResources>
