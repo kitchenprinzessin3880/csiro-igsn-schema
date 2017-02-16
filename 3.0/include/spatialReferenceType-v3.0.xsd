@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Anusuriya Devaraju (CSIRO) -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:cs="https://igsn.csiro.au/schemas/3.0" targetNamespace="https://igsn.csiro.au/schemas/3.0">
 	<xs:simpleType name="spatialRefType">
 		<xs:annotation>

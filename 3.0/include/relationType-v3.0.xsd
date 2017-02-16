@@ -5,7 +5,7 @@
 			<xs:documentation>Description of the relationship between the resource being registered and other entities (e.g., events, documents, etc.) - adopted from datacite-relationType-v4.0.</xs:documentation>
 		</xs:annotation>
 		<xs:restriction base="xs:anyURI">
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/isDerivedFrom"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsDerivedFrom"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsSourceOf"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsAggregateOf"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsMemberOf"/>
@@ -13,20 +13,20 @@
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsIdenticalTo"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsDocumentedBy"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/Participates"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/hasDigitalRepresentation"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/HasDigitalRepresentation"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsDigitalRepresentationOf"/>
-			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/hasSamplingFeature"/>
+			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/HasSamplingFeature"/>
 			<xs:enumeration value="http://pid.geoscience.gov.au/def/voc/igsn-codelists/IsSamplingFeatureOf"/>
 			<!-- IsDerivedFrom - indicates that the resource is created/obtained from a parent resource-->
 			<!-- IsSourceOf - inverse relation of derivedFrom; indicates the resource A is a source upon which the resource B is based).-->
 			<!-- IsAggregateOf - indicates that the resource is an arbitrary aggregation of the related (target) resource-->
 			<!-- IsMemberOf - inverse relation of isAggregateOf; indicates the registered resource is used to compile or create the target resource (related resource) -->
-			<!-- hasReferenceResource - indicates the relation between a sample and its reference sample. A physical sample is usually inspected for identity, physical purity and compared with a reference sample. -->
+			<!-- HasReferenceResource - indicates the relation between a sample and its reference sample. A physical sample is usually inspected for identity, physical purity and compared with a reference sample. -->
 			<!-- IsIdenticalTo - a resource that is the same as the registered resource -->
 			<!-- IsDocumentedBy - indicates the documentation of the resource, including datasets, reports, images, supplementary metadata, etc. -->
-			<!-- participates- A resoure participates in an event -->
+			<!-- Participates- A resoure participates in an event -->
 			<!-- IsDigitalRepresentationOf- This relation maybe used to indicate the digitized version of a physical sample -->
-			<!-- samplingFeature - This relates a physical sample (water specimen) to its sampling feature (observation well) -->
+			<!-- IsSamplingFeatureOf - This relates a physical sample (water specimen) to its sampling feature (observation well) -->
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

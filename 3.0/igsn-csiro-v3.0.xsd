@@ -13,6 +13,11 @@
 	<xs:include schemaLocation="include/eventType-v3.0.xsd"/>
 	<xs:include schemaLocation="include/relationType-v3.0.xsd"/>
 	<xs:include schemaLocation="include/spatialReferenceType-v3.0.xsd"/>
+	<xs:annotation>
+		<xs:documentation> XML Schema v3.0 for registering resources with the CSIRO IGSN service.
+		</xs:documentation>
+	</xs:annotation>
+	<!-- xs:import namespace="https://igsn.csiro.au/schemas/3.0" schemaLocation="https://igsn.csiro.au/schemas/3.0/igsn-csiro-v3.0.xsd"/ -->
 	<!-- xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/basicTypes.xsd"/ -->
 	<!-- xs:import namespace="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance"/ -->
 	<xs:element name="resources">
@@ -55,11 +60,17 @@
 							</xs:element>
 							<xs:element name="isPublic" default="true">
 								<xs:annotation>
-									<xs:documentation>The visibility of a resource's metadata. Use 'true' for public and 'false' for private samples.</xs:documentation>
+									<xs:documentation>The visibility of a resource's metadata. Use 'true' for public and 'false' for private resources.</xs:documentation>
 								</xs:annotation>
 								<xs:complexType>
 									<xs:simpleContent>
-										<xs:extension base="xs:boolean"/>
+										<xs:extension base="xs:boolean">
+											<xs:attribute name="embargoEnd" type="cs:W3CDTFdate">
+												<xs:annotation>
+													<xs:documentation>A private resource will be not be publicly available until the embargo date.</xs:documentation>
+												</xs:annotation>
+											</xs:attribute>
+										</xs:extension>
 									</xs:simpleContent>
 								</xs:complexType>
 							</xs:element>

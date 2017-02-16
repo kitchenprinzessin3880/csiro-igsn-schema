@@ -4,7 +4,7 @@
 	<cs:resource registeredObjectType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/PhysicalSample">
 		<cs:resourceIdentifier>AA-</cs:resourceIdentifier>
 		<cs:landingPage>http://www.altova.com</cs:landingPage>
-		<cs:isPublic>true</cs:isPublic>
+		<cs:isPublic embargoEnd="2017-02-20">false</cs:isPublic>
 		<cs:resourceTitle>a</cs:resourceTitle>
 		<cs:alternateIdentifiers>
 			<cs:alternateIdentifier>token</cs:alternateIdentifier>
@@ -42,11 +42,11 @@
 		<cs:contributors>
 			<cs:contributor contributorType="http://registry.it.csiro.au/def/isotc211/CI_RoleCode/pointOfContact">
 				<cs:contributorName>a</cs:contributorName>
-				<cs:contributorIdentifier contributorIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ORCID">token</cs:contributorIdentifier>
+				<cs:contributorIdentifier contributorIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ARK">token</cs:contributorIdentifier>
 			</cs:contributor>
 		</cs:contributors>
 		<cs:relatedResources>
-			<cs:relatedResource relatedResourceIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/DOI" relationType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/hasDigitalRepresentation">String</cs:relatedResource>
+			<cs:relatedResource relatedResourceIdentifierType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/ARK" relationType="http://pid.geoscience.gov.au/def/voc/igsn-codelists/isDerivedFrom">String</cs:relatedResource>
 		</cs:relatedResources>
 		<cs:comments>token</cs:comments>
 		<cs:logDate eventType="registered">2001</cs:logDate>
