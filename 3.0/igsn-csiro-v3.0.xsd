@@ -2,7 +2,6 @@
 <!-- edited with XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) by Terry Rankine (CSIRO) -->
 <xs:schema xmlns:cs="https://igsn.csiro.au/schemas/3.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink/namespace" targetNamespace="https://igsn.csiro.au/schemas/3.0" elementFormDefault="qualified" version="3.0">
 	<xs:include schemaLocation="include/resourceType-v3.0.xsd"/>
-	<xs:include schemaLocation="include/samplingFeature-v3.0.xsd"/>
 	<xs:include schemaLocation="include/materialType-v3.0.xsd"/>
 	<xs:include schemaLocation="include/geometryType-v3.0.xsd"/>
 	<xs:include schemaLocation="include/nillType-v3.0.xsd"/>
